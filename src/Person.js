@@ -18,19 +18,19 @@ export default function Person({ person }) {
 		<>
 			<Bar x={602} y={607} percentage={hunger} />
 
-			<Bar x={602} y={635} percentage={comfort} />
+			<Bar x={602} y={634} percentage={comfort} />
 
-			<Bar x={602} y={663} percentage={bladder} />
+			<Bar x={602} y={662} percentage={bladder} />
 
-			<Bar x={602} y={691} percentage={energy} />
+			<Bar x={602} y={689} percentage={energy} />
 
 			<Bar x={741} y={607} percentage={fun} />
 
-			<Bar x={741} y={635} percentage={social} />
+			<Bar x={741} y={634} percentage={social} />
 
-			<Bar x={741} y={663} percentage={hygiene} />
+			<Bar x={741} y={662} percentage={hygiene} />
 
-			<Bar x={741} y={691} percentage={environment} />
+			<Bar x={741} y={689} percentage={environment} />
 		</>
 	)
 
