@@ -46,7 +46,7 @@ export default function SimsGui() {
 			.then(json => {
 				//Split up into parts of 3 chars and add §
 				let moneyStr = json["money"] + ""
-				console.log("MONEY", moneyStr)
+				
 				let money = ""
 				for(var i = moneyStr.length - 1; i >= 0; i--) {
 					money = moneyStr[i] + money;
