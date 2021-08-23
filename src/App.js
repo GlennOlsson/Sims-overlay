@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import Webcam from 'react-webcam';
+
+const width = 1000;
+const height = 500;
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App"> 
+          <Webcam style={{position: 'relative', zIndex: 0, alignSelf: 'flex-start'}} videoConstraints={{height, width}}/>
+
+          <div style={{
+            backgroundColor: 'blue',
+            zIndex: 100,
+            position: 'relative',
+            height: 10,
+            width: 10
+          }} />
     </div>
   );
 }
