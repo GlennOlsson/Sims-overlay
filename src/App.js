@@ -1,30 +1,35 @@
 import "./App.css";
 import Webcam from "react-webcam";
+import gui from "./images/gui.png"
 
-const width = 1000;
-const height = 500;
+const width = 1920;
+const height = 1080;
+
+const guiScaling = 0.5;
 
 function App() {
 	return (
 		<div className="App">
 			<Webcam
 				style={{
-					position: "relative",
-					zIndex: 0,
+					position: "absolute",
+					zIndex: -1,
 					alignSelf: "flex-start",
 				}}
 				videoConstraints={{ height, width }}
 			/>
 
-			<div
-				style={{
-					backgroundColor: "blue",
-					zIndex: 100,
-					position: "relative",
-					height: 10,
-					width: 10,
-				}}
-			/>
+			<img 
+        alt={"meaningful text"} 
+        src={gui}
+        style={{
+          height: height * guiScaling,
+          width: width * guiScaling,
+          marginTop: 180,
+          marginLeft: -10,
+          zIndex: 100
+        }}
+      />
 		</div>
 	);
 }
