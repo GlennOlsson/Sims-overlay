@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Webcam from "react-webcam";
 import gui from "./images/gui.png";
+import Modal from "./Modal";
 
 import Person from "./Person";
 
@@ -8,19 +9,18 @@ import Person from "./Person";
 const width = 1920;
 const height = 1080;
 
-const modalWidth = 600
-const modalHeight = 300
-
 const guiScaling = 0.5;
 
-const host = "http://055f-188-151-144-92.ngrok.io"
+const host = "http://8862-188-151-144-92.ngrok.io"
 // const host = "http://localhost:8000"
 
 export default function SimsGui() {
 
 	let [selectedPerson, setSelectedPerson] = useState(null);
+	let [modalText, setModal] = useState(null);
+	let [money, setMoney] = useState("§86");
 
-	const fetchPeople = () => {
+	const fetchCurrentPerson = () => {
 		let url = host + "/current-character"
 
 		return fetch(url)
@@ -30,18 +30,37 @@ export default function SimsGui() {
 			})
 	}
 
+	const fetchModal = () => {
+		let url = host + "/modal"
+		return fetch(url)
+			.then(r => r.json())
+			.then(json => {
+				setModal(json["text"])
+			})
+	}
+
+	const fetchMoney = () => {
+		let url = host + "/money"
+		return fetch(url)
+			.then(r => r.json())
+			.then(json => {
+				setMoney(json["money"])
+			})
+	}
+
 	const refetch = () => {
 		setTimeout(() => {
-			fetchPeople()
-				.then(() => {
-					// refetch()
-				})
+			Promise.all([
+				fetchCurrentPerson(),
+				fetchModal(),
+				fetchMoney()
+			]).then(() => {
+				// refetch()
+			})
 		}, 5000)
 	}
 
-	refetch()
-
-	const money = "§100 000"
+	// refetch()
 
 	return (
 		<>
@@ -68,56 +87,7 @@ export default function SimsGui() {
 					}}
 				/>
 
-				<div style={{
-					width: modalWidth,
-					height: modalHeight,
-					backgroundColor: "rgba(30,88,225,0.7)",
-					top: 170,
-					left: 350,
-					position: "absolute",
-					borderRadius: 30
-				}}>
-
-					<div style={{
-						width: modalWidth - 30,
-						height: modalHeight - 100,
-						margin: 15,
-						backgroundColor: "rgba(72,131,217,0.7)",
-						borderRadius: 30,
-						borderColor: "#003075",
-						borderWidth: 2,
-						border: "solid",
-					}}> 
-					<p style={{
-						padding: 10
-					}}>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Egestas pretium aenean pharetra magna ac. Sit amet facilisis magna etiam tempor orci eu lobortis. Quisque egestas diam in arcu cursus. Bibendum neque egestas congue quisque egestas diam in arcu cursus. Faucibus pulvinar elementum integer enim. Feugiat in fermentum posuere urna. Et magnis dis parturient montes nascetur 
-					</p>
-					</div>
-
-					<div style={{
-						width: 90,
-						height: 40,
-						backgroundColor: "rgba(72,131,217,0.7)",
-						borderRadius: 20,
-						borderColor: "#003075",
-						borderWidth: 2,
-						border: "solid",
-						marginLeft: (modalWidth - 30) / 2 - 35,
-					}}> 
-					<p style={{
-						verticalAlign: 'middle',
-						textAlign: 'center',
-						fontSize: 30,
-						height: "100%",
-						marginTop: 0,
-						flex: 1
-					}}>
-						OK
-					</p>
-					</div>
-
-				</div>
+				{ modalText && <Modal text={modalText} />}
 
 				<p style={{
 					backgroundColor: "rgb(106,166,174)",
