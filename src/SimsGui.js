@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Webcam from "react-webcam";
 import gui from "./images/gui.png";
 
@@ -8,23 +9,34 @@ const width = 1920;
 const height = 1080;
 const guiScaling = 0.5;
 
+const host = "http://055f-188-151-144-92.ngrok.io"
+// const host = "http://localhost:8000"
+
 export default function SimsGui() {
 
-	const person = {
-		name: "Albin",
-		needs: {
-			hunger: 30,
-			comfort: 50,
-			bladder: 30,
-			energy: 34,
-			fun: 23,
-			social: 23,
-			hygiene: 4,
-			environment: 100,
-		}
-	
+	let [selectedPerson, setSelectedPerson] = useState(null);
+
+	const fetchPeople = () => {
+		let url = host + "/current-character"
+
+		return fetch(url)
+			.then(r => r.json())
+			.then(json => {
+				setSelectedPerson(json)
+			})
 	}
-	
+
+	const refetch = () => {
+		setTimeout(() => {
+			fetchPeople()
+				.then(() => {
+					refetch()
+				})
+		}, 5000)
+	}
+
+	refetch()
+
 	const money = "§100 000"
 
 	return (
@@ -70,7 +82,7 @@ export default function SimsGui() {
 				</p>
 			</div>
 
-			<Person person={person} />
+			{selectedPerson && <Person person={selectedPerson} />}
 		</>	
 	);
 }
