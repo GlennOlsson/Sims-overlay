@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import gui from "./images/gui.png";
 import Modal from "./Modal";
@@ -44,7 +44,17 @@ export default function SimsGui() {
 		return fetch(url)
 			.then(r => r.json())
 			.then(json => {
-				setMoney(json["money"])
+				//Split up into parts of 3 chars and add §
+				let moneyStr = json["money"] + ""
+				console.log("MONEY", moneyStr)
+				let money = ""
+				for(var i = moneyStr.length - 1; i >= 0; i--) {
+					money = moneyStr[i] + money;
+					if(i !== 0 && i % 3 === 0)
+						money = " " + money
+				}
+
+				setMoney("§" + money)
 			})
 	}
 
@@ -60,7 +70,8 @@ export default function SimsGui() {
 		}, 5000)
 	}
 
-	// refetch()
+	//Code only runs once, not every time the state is updated
+	useEffect(refetch, []);
 
 	return (
 		<>
