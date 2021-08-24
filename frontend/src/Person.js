@@ -60,7 +60,8 @@ export default function Person({ person }) {
 					textAlign: 'center',
 					color: "rgb(0, 14, 77)",
 					verticalAlign: "middle",
-					paddingTop: 1
+					paddingTop: 1,
+					fontWeight: 'bold'
 				}}>
 					{money}
 				</p>
