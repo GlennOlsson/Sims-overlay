@@ -5,6 +5,8 @@ import Modal from "./Modal";
 
 import Person from "./Person";
 
+import avatars from "./avatars";
+
 // For scaling the gui in the lower left corner
 const width = 1920;
 const height = 1080;
@@ -49,6 +51,10 @@ export default function SimsGui() {
 		refetch();
 	}, []);
 
+	const avatarName = "profile_" + selectedPerson.name.toLowerCase()
+
+	const avatar = avatars[avatarName]
+
 	return (
 		<>
 			<div className="Gui">
@@ -77,7 +83,7 @@ export default function SimsGui() {
 				{modalText && <Modal text={modalText} />}
 			</div>
 
-			{/* <div
+			<div
 				style={{
 					width: 38,
 					height: 135,
@@ -86,9 +92,9 @@ export default function SimsGui() {
 					left: 545,
 					position: "absolute",
 				}}
-			></div> */}
+			></div>
 
-			{selectedPerson && <Person person={selectedPerson} />}
+			{selectedPerson && <Person person={selectedPerson} avatar={avatar}/>}
 		</>
 	);
 }
