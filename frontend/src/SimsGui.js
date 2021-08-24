@@ -11,47 +11,43 @@ const height = 1080;
 
 const guiScaling = 0.5;
 
-const host = "http://a51e-188-151-144-92.ngrok.io"
+const host = "http://a51e-188-151-144-92.ngrok.io";
 // const host = "http://localhost:8000"
 
 export default function SimsGui() {
-
 	let [selectedPerson, setSelectedPerson] = useState(null);
 	let [modalText, setModal] = useState(null);
 
 	const fetchCurrentPerson = () => {
-		let url = host + "/current-character"
+		let url = host + "/current-character";
 
 		return fetch(url)
-			.then(r => r.json())
-			.then(json => {
-				setSelectedPerson(json)
-			})
-	}
+			.then((r) => r.json())
+			.then((json) => {
+				setSelectedPerson(json);
+			});
+	};
 
 	const fetchModal = () => {
-		let url = host + "/modal"
+		let url = host + "/modal";
 		return fetch(url)
-			.then(r => r.json())
-			.then(json => {
-				setModal(json["text"])
-			})
-	}
+			.then((r) => r.json())
+			.then((json) => {
+				setModal(json["text"]);
+			});
+	};
 
 	//Code only runs once, not every time the state is updated
 	useEffect(() => {
 		const refetch = () => {
 			setTimeout(() => {
-				Promise.all([
-					fetchCurrentPerson(),
-					fetchModal()
-				]).then(() => {
-					refetch()
-				})
-			}, 5000)
-		}
-		refetch()
-	}, [])
+				Promise.all([fetchCurrentPerson(), fetchModal()]).then(() => {
+					refetch();
+				});
+			}, 5000);
+		};
+		refetch();
+	}, []);
 
 	return (
 		<>
@@ -78,10 +74,21 @@ export default function SimsGui() {
 					}}
 				/>
 
-				{ modalText && <Modal text={modalText} />}
+				{modalText && <Modal text={modalText} />}
 			</div>
 
+			{/* <div
+				style={{
+					width: 38,
+					height: 135,
+					backgroundColor: "rgb(123, 136, 202)",
+					top: 569,
+					left: 545,
+					position: "absolute",
+				}}
+			></div> */}
+
 			{selectedPerson && <Person person={selectedPerson} />}
-		</>	
+		</>
 	);
 }

@@ -16,19 +16,61 @@ export default function Person({ person }) {
 
 	//Split up into parts of 3 chars and add §
 	const moneyStr = person.money + ""
-	
-	console.log(moneyStr)
 
 	let money = ""
 	for(var i = 0; i < moneyStr.length; i++) {
 		if(i !== 0 && i % 3 === 0)
 			money = " " + money
 		let index = moneyStr.length - i - 1;
-		console.log(money, i, index)
 		money = moneyStr[index] + money;
 	}
 
 	money = "§" + money
+
+	
+	const getHealthBar = () => {
+		const needSum = hunger +
+			+ comfort
+			+ bladder
+			+ energy
+			+ fun
+			+ social
+			+ hygiene
+			+ environment
+		
+		const healthPercentage = needSum / 800
+		const greenBarHeight = 63 * ( 2 * healthPercentage - 1)
+
+		const greenBarColor = healthPercentage === 800 ? "green" : "white"
+
+		return (
+			<div>
+
+			{(healthPercentage > 0.5) && <div
+				style={{
+					width: 38,
+					height: greenBarHeight,
+					backgroundColor: greenBarColor,
+					top: 573 + (63 - greenBarHeight),
+					left: 545,
+					position: "absolute",
+				}}
+			></div>}
+			
+			{(healthPercentage <= 0.5) && <div
+				style={{
+					width: 38,
+					//when x (health) is 0.5, height is 0. When x is 0 height is 67 (1*67)
+					height: 67 * ( -2 * healthPercentage + 1),
+					backgroundColor: "red",
+					top: 635,
+					left: 545,
+					position: "absolute",
+				}}
+			></div>}
+			</div>
+		)
+	}
 
 	return (
 		<>
@@ -65,6 +107,8 @@ export default function Person({ person }) {
 				}}>
 					{money}
 				</p>
+			
+			{getHealthBar()}
 		</>
 	)
 
