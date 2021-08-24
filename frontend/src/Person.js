@@ -1,6 +1,7 @@
+import avatars from "./avatars";
 import Bar from "./Bar";
 
-export default function Person({ person, avatar }) {
+export default function Person({ person }) {
 	const {
 		hunger,
 		comfort,
@@ -23,6 +24,10 @@ export default function Person({ person, avatar }) {
 	}
 
 	money = "§" + money;
+
+	const avatarName = "profile_" + person.name.toLowerCase()
+
+	const avatar = avatars[avatarName]
 
 	const getHealthBar = () => {
 		const needSum =
