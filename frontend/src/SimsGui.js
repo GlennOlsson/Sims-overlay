@@ -5,7 +5,6 @@ import Modal from "./Modal";
 
 import Person from "./Person";
 
-import avatars from "./avatars";
 import Sidebar from "./Sidebar";
 
 // For scaling the gui in the lower left corner
