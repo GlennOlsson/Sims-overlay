@@ -11,9 +11,9 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    allow_credentials=True,
 )
 
 f = open("characters.json")
@@ -28,7 +28,6 @@ all_characters = {
 
 current_character = all_characters["albin"]
 
-money = 100
 modalText = None
 
 def get_character_from_list(name: str) -> Person:
@@ -53,6 +52,9 @@ async def update_character(name: str, person: Person):
 
 @app.get("/current-character")
 async def get_current_character():
+    global current_character
+    character_id = current_character.name.lower()
+    current_character = all_characters[character_id]
     return current_character
 
 @app.post("/current-character")
@@ -61,12 +63,8 @@ async def update_current_character(body: UpdateCharacterBody):
     current_character = all_characters[body.name]
     return current_character
 
-@app.get("/money")
-async def get_money():
-    return { "money": money}
-
 @app.get("/modal")
-async def get_money():
+async def get_modal_content():
     return { "modal": modalText}
 
 @app.post("/modal")
