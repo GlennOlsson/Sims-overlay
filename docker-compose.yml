@@ -4,11 +4,13 @@ services:
   backend:
     build: ./backend
     ports:
-      - 8000:80
+      - 8000:8000
     volumes:
       - ./backend/app/:/app/
 
   frontend:
     build: ./frontend
     ports:
-      - 8001:3000
+      - 3000:3000
+    volumes:
+      - ./frontend/:/app/

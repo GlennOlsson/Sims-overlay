@@ -13,7 +13,7 @@ const height = 1080;
 
 const guiScaling = 0.5;
 
-const host = "130.229.151.198:8000"
+const host = "http://127.0.0.1:8000"
 
 export default function SimsGui() {
 	let [selectedPerson, setSelectedPerson] = useState(null);
