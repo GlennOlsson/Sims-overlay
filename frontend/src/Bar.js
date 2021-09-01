@@ -1,8 +1,8 @@
 
 export default function Bar(props) {
 
-	const height = 8
-	const barWidth = 90
+	const height = 11
+	const barWidth = 122
 	const greenWidth = barWidth * (props.percentage / 100)
   
 	const x = props.x

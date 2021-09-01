@@ -12,11 +12,11 @@ export default function Sidebar({selected}) {
 		"oscar",
     ]
 
-    const imgHeight = 50;
-    const imgWidth = 50;
+    const imgHeight = 63;
+    const imgWidth = 63;
 
-    const startX = 21;
-    const startY = 150;
+    const startX = 30;
+    const startY = 245;
     const ySpacing = 10;
 
     return(

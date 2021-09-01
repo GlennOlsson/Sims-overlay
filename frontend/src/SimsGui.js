@@ -11,7 +11,7 @@ import Sidebar from "./Sidebar";
 const width = 1920;
 const height = 1080;
 
-const guiScaling = 0.5;
+const guiScaling = 0.68;
 
 const host = "http://127.0.0.1:8000"
 
@@ -60,17 +60,17 @@ export default function SimsGui() {
 						alignSelf: "flex-start",
 					}}
 					videoConstraints={{ height, width }}
-					height={1080}
-					width={1920}
+					height={1080+"px"}
+					width={1920+"px"}
 				/>
 
 				<img
 					alt={"meaningful text"}
 					src={gui}
 					style={{
-						height: height * guiScaling,
-						width: width * guiScaling,
-						marginTop: 180,
+						height: 1417 * guiScaling,
+						width: 1920 * guiScaling,
+						marginTop: 10,
 						marginLeft: -10,
 						zIndex: 2,
 						position: "absolute",
@@ -83,11 +83,11 @@ export default function SimsGui() {
 
 			<div
 				style={{
-					width: 38,
-					height: 135,
+					width: 40,
+					height: 180,
 					backgroundColor: "rgb(123, 136, 202)",
-					top: 569,
-					left: 545,
+					top: 770,
+					left: 752,
 					position: "absolute",
 					zIndex: 0
 				}}

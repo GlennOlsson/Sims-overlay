@@ -32,7 +32,7 @@ export default function Person({ person }) {
 	const getHealthBar = () => {
 		const needSum =
 			hunger +
-			+comfort +
+			comfort +
 			bladder +
 			energy +
 			fun +
@@ -41,20 +41,23 @@ export default function Person({ person }) {
 			environment;
 
 		const healthPercentage = needSum / 800;
-		const greenBarHeight = 63 * (2 * healthPercentage - 1);
+		const greenBarHeight = 88 * (2 * healthPercentage - 1);
 
-		const greenBarColor = healthPercentage === 800 ? "green" : "white";
+		const greenBarColor = healthPercentage > 0.99 ? "white" : "rgb(83,183,83)";
+
+		const healthbarStartX = 752;
+		const healthBarWidth = 40;
 
 		return (
 			<div>
 				{healthPercentage > 0.5 && (
 					<div
 						style={{
-							width: 38,
+							width: healthBarWidth,
 							height: greenBarHeight,
 							backgroundColor: greenBarColor,
-							top: 573 + (63 - greenBarHeight),
-							left: 545,
+							top: 770 + (90 - greenBarHeight),
+							left: healthbarStartX,
 							position: "absolute",
 							zIndex: 0,
 						}}
@@ -64,12 +67,12 @@ export default function Person({ person }) {
 				{healthPercentage <= 0.5 && (
 					<div
 						style={{
-							width: 38,
+							width: healthBarWidth,
 							//when x (health) is 0.5, height is 0. When x is 0 height is 67 (1*67)
-							height: 67 * (-2 * healthPercentage + 1),
+							height: 88 * (-2 * healthPercentage + 1),
 							backgroundColor: "red",
-							top: 635,
-							left: 545,
+							top: 860,
+							left: healthbarStartX,
 							position: "absolute",
 							zIndex: 0,
 						}}
@@ -81,32 +84,32 @@ export default function Person({ person }) {
 
 	return (
 		<>
-			<Bar x={602} y={607} percentage={hunger} />
+			<Bar x={821} y={820} percentage={hunger} />
 
-			<Bar x={602} y={634} percentage={comfort} />
+			<Bar x={821} y={857} percentage={comfort} />
 
-			<Bar x={602} y={662} percentage={bladder} />
+			<Bar x={821} y={894} percentage={bladder} />
 
-			<Bar x={602} y={689} percentage={energy} />
+			<Bar x={821} y={932} percentage={energy} />
 
-			<Bar x={741} y={607} percentage={fun} />
+			<Bar x={1010} y={820} percentage={fun} />
 
-			<Bar x={741} y={634} percentage={social} />
+			<Bar x={1010} y={857} percentage={social} />
 
-			<Bar x={741} y={662} percentage={hygiene} />
+			<Bar x={1010} y={894} percentage={hygiene} />
 
-			<Bar x={741} y={689} percentage={environment} />
+			<Bar x={1010} y={932} percentage={environment} />
 
 			<p
 				style={{
 					backgroundColor: "rgb(106,166,174)",
-					width: 73,
-					height: 14,
-					top: 673,
-					left: 19,
+					width: 100,
+					height: 20,
+					top: 913,
+					left: 29,
 					borderRadius: 30,
 					position: "absolute",
-					fontSize: 10,
+					fontSize: 12,
 					textAlign: "center",
 					color: "rgb(0, 14, 77)",
 					verticalAlign: "middle",
@@ -122,10 +125,10 @@ export default function Person({ person }) {
 				alt={"Avatar"}
 				src={avatar}
 				style={{
-					height: 95,
-					width: 95,
-					marginTop: 525,
-					marginLeft: 200,
+					height: 130,
+					width: 130,
+					marginTop: 708,
+					marginLeft: 275,
 					zIndex: 3,
 					position: "absolute",
 				}}
