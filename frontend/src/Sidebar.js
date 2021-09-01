@@ -4,17 +4,19 @@ import avatars from "./avatars";
 export default function Sidebar({selected}) {
 
     const people = [
+        "agnes",
+        "isabel",
         "albin",
         "george",
 		"emilia",
-		"oscar"
+		"oscar",
     ]
 
     const imgHeight = 50;
     const imgWidth = 50;
 
     const startX = 21;
-    const startY = 270;
+    const startY = 150;
     const ySpacing = 10;
 
     return(
@@ -37,7 +39,7 @@ export default function Sidebar({selected}) {
                             width: imgWidth,
                             marginTop: startY + index * (ySpacing + imgHeight),
                             marginLeft: startX,
-                            zIndex: 1,
+                            zIndex: 2,
                             position: "absolute",
                         }}
 					/>

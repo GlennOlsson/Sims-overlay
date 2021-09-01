@@ -56,6 +56,7 @@ export default function Person({ person }) {
 							top: 573 + (63 - greenBarHeight),
 							left: 545,
 							position: "absolute",
+							zIndex: 0,
 						}}
 					></div>
 				)}
@@ -70,6 +71,7 @@ export default function Person({ person }) {
 							top: 635,
 							left: 545,
 							position: "absolute",
+							zIndex: 0,
 						}}
 					></div>
 				)}
@@ -110,6 +112,7 @@ export default function Person({ person }) {
 					verticalAlign: "middle",
 					paddingTop: 1,
 					fontWeight: "bold",
+					zIndex: 3,
 				}}
 			>
 				{money}
@@ -123,7 +126,7 @@ export default function Person({ person }) {
 					width: 95,
 					marginTop: 525,
 					marginLeft: 200,
-					zIndex: 2,
+					zIndex: 3,
 					position: "absolute",
 				}}
 			/>

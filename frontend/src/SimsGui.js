@@ -45,7 +45,7 @@ export default function SimsGui() {
 				Promise.all([fetchCurrentPerson(), fetchModal()]).then(() => {
 					refetch();
 				});
-			}, 5000);
+			}, 2000);
 		};
 		refetch();
 	}, []);
@@ -60,6 +60,8 @@ export default function SimsGui() {
 						alignSelf: "flex-start",
 					}}
 					videoConstraints={{ height, width }}
+					height={1080}
+					width={1920}
 				/>
 
 				<img
@@ -70,8 +72,9 @@ export default function SimsGui() {
 						width: width * guiScaling,
 						marginTop: 180,
 						marginLeft: -10,
-						zIndex: 0,
+						zIndex: 2,
 						position: "absolute",
+						mirrored: false,
 					}}
 				/>
 
@@ -86,6 +89,7 @@ export default function SimsGui() {
 					top: 569,
 					left: 545,
 					position: "absolute",
+					zIndex: 0
 				}}
 			></div>
 

@@ -23,7 +23,8 @@ export default function Bar(props) {
 		  top: y,
 		  backgroundColor: 'rgb(81,96,89)',
 		  position: "absolute",
-		  borderRadius: radius
+		  borderRadius: radius,
+		  zIndex: 2,
 		}} />
   
 		<div style={{
@@ -33,7 +34,8 @@ export default function Bar(props) {
 		  top: y,
 		  backgroundColor: 'rgb(' + red + ',183,83)',
 		  position: "absolute",
-		  borderRadius: radius
+		  borderRadius: radius,
+		  zIndex: 3,
 		}} /> 
 	  </>
 	)
