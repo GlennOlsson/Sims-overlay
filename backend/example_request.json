@@ -1,0 +1,89 @@
+{
+    "current_character": "albin",
+    "characters": {
+        "albin": {
+            "name": "Albin",
+            "needs": {
+                "hunger": 100,
+                "comfort": 100,
+                "bladder": 100,
+                "energy": 100,
+                "fun": 100,
+                "social": 100,
+                "hygiene": 100,
+                "environment": 100
+            },
+            "money": 7000
+        },
+        "oscar": {
+            "name": "Oscar",
+            "needs": {
+                "hunger": 100,
+                "comfort": 100,
+                "bladder": 100,
+                "energy": 100,
+                "fun": 100,
+                "social": 100,
+                "hygiene": 100,
+                "environment": 100
+            },
+            "money": 10000
+        },
+        "emilia": {
+            "name": "Emilia",
+            "needs": {
+                "hunger": 80,
+                "comfort": 100,
+                "bladder": 100,
+                "energy": 100,
+                "fun": 100,
+                "social": 100,
+                "hygiene": 100,
+                "environment": 100
+            },
+            "money": 10000
+        },
+        "george": {
+            "name": "George",
+            "needs": {
+                "hunger": 100,
+                "comfort": 100,
+                "bladder": 100,
+                "energy": 100,
+                "fun": 100,
+                "social": 100,
+                "hygiene": 100,
+                "environment": 100
+            },
+            "money": 10000
+        },
+        "agnes": {
+            "name": "Agnes",
+            "needs": {
+                "hunger": 100,
+                "comfort": 100,
+                "bladder": 100,
+                "energy": 100,
+                "fun": 100,
+                "social": 100,
+                "hygiene": 100,
+                "environment": 100
+            },
+            "money": 10000000
+        },
+        "isabel": {
+            "name": "Isabel",
+            "needs": {
+                "hunger": 100,
+                "comfort": 100,
+                "bladder": 100,
+                "energy": 100,
+                "fun": 100,
+                "social": 100,
+                "hygiene": 100,
+                "environment": 100
+            },
+            "money": 10000000
+        }
+    }
+}
