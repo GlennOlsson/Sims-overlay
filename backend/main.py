@@ -24,6 +24,8 @@ all_characters = {
     "emilia": Person(**characters_raw["emilia"]),
     "oscar": Person(**characters_raw["oscar"]),
     "george": Person(**characters_raw["george"]),
+    "isabel": Person(**characters_raw["isabel"]),
+    "agnes": Person(**characters_raw["agnes"]),
 }
 
 current_character = all_characters["albin"]
