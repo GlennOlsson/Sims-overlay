@@ -50,6 +50,11 @@ export default function SimsGui() {
 		refetch();
 	}, []);
 
+	const getCurrentTime = () => {
+		const today = new Date();
+		return today.getHours() + ":" + today.getMinutes();
+	}
+
 	return (
 		<>
 			<div className="Gui">
@@ -96,6 +101,27 @@ export default function SimsGui() {
 			<Sidebar selected={selectedPerson} />
 
 			{selectedPerson && <Person person={selectedPerson}/>}
+
+			<p
+				style={{
+					backgroundColor: "rgb(106,166,174)",
+					width: 120,
+					height: 18,
+					top: 887,
+					left: 265,
+					borderRadius: 30,
+					position: "absolute",
+					fontSize: 12,
+					textAlign: "center",
+					color: "rgb(0, 14, 77)",
+					verticalAlign: "middle",
+					paddingTop: 1,
+					fontWeight: "bold",
+					zIndex: 3,
+				}}
+			>
+				Sat {getCurrentTime()}
+			</p>
 		</>
 	);
 }
