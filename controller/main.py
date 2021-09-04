@@ -58,7 +58,7 @@ layout = [
         sg.Combo(selection, size=(width, 5), enable_events=True, key='selected_character'),
         sg.Stretch(),
         sg.Button("Update", button_color="green"),
-        sg.Checkbox("Auto update", key="auto_update")
+        sg.Checkbox("Auto update", key="auto_update", default=True)
     ],
     [sg.Checkbox("Cycle through characters", key="cycle_char_checkbox")],
     [sg.TabGroup(
