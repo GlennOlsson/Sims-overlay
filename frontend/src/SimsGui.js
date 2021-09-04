@@ -10,7 +10,7 @@ import Sidebar from "./Sidebar";
 // For scaling the gui in the lower left corner
 const width = 1920;
 const height = 1080;
-
+const yOffset = 100;
 const guiScaling = 0.68;
 
 const host = "http://127.0.0.1:8000"
@@ -45,7 +45,7 @@ export default function SimsGui() {
 				Promise.all([fetchCurrentPerson(), fetchModal()]).then(() => {
 					refetch();
 				});
-			}, 2000);
+			}, 500);
 		};
 		refetch();
 	}, []);
@@ -75,7 +75,7 @@ export default function SimsGui() {
 					style={{
 						height: 1417 * guiScaling,
 						width: 1920 * guiScaling,
-						marginTop: 10,
+						marginTop: 10 + yOffset,
 						marginLeft: -10,
 						zIndex: 2,
 						position: "absolute",
@@ -91,7 +91,7 @@ export default function SimsGui() {
 					width: 40,
 					height: 180,
 					backgroundColor: "rgb(123, 136, 202)",
-					top: 770,
+					top: 770+yOffset,
 					left: 752,
 					position: "absolute",
 					zIndex: 0
@@ -107,7 +107,7 @@ export default function SimsGui() {
 					backgroundColor: "rgb(106,166,174)",
 					width: 120,
 					height: 18,
-					top: 887,
+					top: 887+yOffset,
 					left: 265,
 					borderRadius: 30,
 					position: "absolute",

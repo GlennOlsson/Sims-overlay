@@ -2,7 +2,7 @@ import avatars from "./avatars";
 
 
 export default function Sidebar({selected}) {
-
+    const yOffset = 100;
     const people = [
         "agnes",
         "isabel",
@@ -16,7 +16,7 @@ export default function Sidebar({selected}) {
     const imgWidth = 63;
 
     const startX = 30;
-    const startY = 245;
+    const startY = 245+yOffset;
     const ySpacing = 10;
 
     return(
