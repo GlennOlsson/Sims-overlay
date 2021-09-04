@@ -102,6 +102,7 @@ prev_values = None
 last_update = 0
 prev_index = 0
 last_cycle = 0
+
 while True:
     event, values = window.read(timeout=60)
 
@@ -130,7 +131,7 @@ while True:
             window["selected_character"].update(list(selection)[index])
             send_values(values)
 
-    if time.time() - last_update > 1:
+    if time.time() - last_update > 1 and values == prev_values:
         last_update = time.time()
         fetch_initial_values()
 
