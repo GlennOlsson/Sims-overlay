@@ -6,6 +6,8 @@ from PySimpleGUI.PySimpleGUI import Checkbox
 
 from mapper import controller_to_backend, backend_to_controller
 
+url = "http://192.168.1.105:8000"
+
 def generate_layout(name: str):
     layout = [
         [sg.Text("Money"), sg.Input("", size=(15, 1), key=f"{name}_value_money")],
@@ -83,7 +85,7 @@ window = sg.Window(
 )
 
 def fetch_initial_values():
-    resp = requests.get("http://localhost:8000/everything")
+    resp = requests.get(f"{url}/everything")
     controller_values = backend_to_controller(**resp.json())
 
     for val in controller_values:
@@ -91,12 +93,13 @@ def fetch_initial_values():
 
 def send_values(values):
     backend_values = controller_to_backend(**values)
-    resp = requests.post("http://localhost:8000/everything", json=backend_values)
+    resp = requests.post(f"{url}/everything", json=backend_values)
     if resp.status_code != 200:
         raise Exception("Fault")
 
 fetch_initial_values()
 prev_values = None
+last_update = 0
 prev_index = 0
 last_cycle = 0
 while True:
@@ -126,6 +129,10 @@ while True:
 
             window["selected_character"].update(list(selection)[index])
             send_values(values)
+
+    if time.time() - last_update > 1:
+        last_update = time.time()
+        fetch_initial_values()
 
     if event == sg.WIN_CLOSED:
         break
