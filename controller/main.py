@@ -131,7 +131,7 @@ while True:
             window["selected_character"].update(list(selection)[index])
             send_values(values)
 
-    if time.time() - last_update > 1 and values == prev_values:
+    if time.time() - last_update > 5 and values == prev_values:
         last_update = time.time()
         fetch_initial_values()
 
